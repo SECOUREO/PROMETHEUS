@@ -9,6 +9,8 @@ alerting:
   alertmanagers:
   - static_configs:
     - targets: ['localhost:9093']
+      labels:
+            environment: "PPR"
 
 rule_files:
   # - "prometheus.rules.yml"
@@ -21,6 +23,8 @@ scrape_configs:
     scheme: http
     static_configs:
       - targets: ["localhost:9090"]
+        labels:
+          environment: "PPR"
     relabel_configs:
       - source_labels: [__address__]
         regex: '([^:]+):\d+'
@@ -34,3 +38,5 @@ scrape_configs:
     honor_labels: true
     static_configs:
       - targets: ['localhost:9091']
+        labels:
+            environment: "PPR"
