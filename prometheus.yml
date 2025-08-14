@@ -40,3 +40,5 @@ scrape_configs:
       - targets: ['localhost:9091']
         labels:
             environment: "DEV"
+
+  ###TEST###
