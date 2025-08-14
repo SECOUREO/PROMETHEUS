@@ -19,11 +19,11 @@ jobs:
       - name: Setup SSH agent with private key
         uses: webfactory/ssh-agent@v0.5.4
         with:
-          ssh-private-key: ${{ secrets.SSH_PRIVATE_KEY }}
+          ssh-private-key: ${{ secrets.SSH_PRIVATE_KEY_LAPTOP }}
 
       - name: Copy Prometheus and Alertmanager config files to EC2
         run: |
-          scp prometheus.yml alertmanager.yml ec2-user@YOUR_EC2_IP:/etc/prometheus/
+          rsync prometheus.yml alertmanager.yml ec2-user@YOUR_EC2_IP:/opt /prometheus/
 
       - name: Restart Prometheus and Alertmanager services
         run: |
