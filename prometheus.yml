@@ -40,5 +40,12 @@ scrape_configs:
       - targets: ['localhost:9091']
         labels:
             environment: "DEV"
+  
+  - job_name: 'SECOUREO - NODE_EXPORTER'
+    honor_labels: true
+    static_configs:
+      - targets: ['grafana.secoureo.com:9100']
+        labels:
+            environment: "DEV"
 
   ###TEST###
