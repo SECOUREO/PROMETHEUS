@@ -17,7 +17,7 @@ rule_files:
   # - "second_rules.yml"
 
 scrape_configs:
-  - job_name: "prometheus"
+  - job_name: "SECOUREO - PROMETHEUS"
     metrics_path: /metrics
     scrape_interval: 60s
     scheme: http
@@ -25,21 +25,19 @@ scrape_configs:
       - targets: ["localhost:9090"]
         labels:
           environment: "DEV"
+          shortname: "EC2_PROMETHEUS"
     relabel_configs:
       - source_labels: [__address__]
         regex: '([^:]+):\d+'
         target_label: instance
         replacement: '\${1}'
-      - source_labels: [instance]
-        regex: '^(\d+\.\d+)\.\d+\.\d+'
-        target_label: shortname
-        replacement: '\${1}'
-  - job_name: 'pushgateway'
+  - job_name: 'SECOUREO - PUSHGATEWAY'
     honor_labels: true
     static_configs:
       - targets: ['localhost:9091']
         labels:
             environment: "DEV"
+            shortname: "EC2_PROMETHEUS"
   
   - job_name: 'SECOUREO - NODE_EXPORTER'
     honor_labels: true
@@ -47,5 +45,6 @@ scrape_configs:
       - targets: ['grafana.secoureo.com:9100']
         labels:
             environment: "DEV"
+            shortname: "EC2_GRAFANA"
 
   ###TEST######
