@@ -35,7 +35,7 @@ jobs:
                 "sudo aws s3 cp s3://prometheus-config-secoureo-bucket/prometheus.yml /etc/prometheus/prometheus.yml",
                 "sudo aws s3 cp s3://prometheus-config-secoureo-bucket/alertmanager.yml /etc/prometheus/alertmanager.yml",
                 "sudo chown prometheus:prometheus /etc/prometheus/prometheus.yml",
-                "sudo chown prometheus:prometheus /etc/prometheus/alertmanager.yml",
+                "sudo chown prometheus:prometheus /opt/alertmanager/alertmanager.yml",
                 "sudo systemctl restart prometheus",
                 "sudo systemctl restart alertmanager",
                 "sudo systemctl is-active --quiet prometheus",
